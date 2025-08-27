@@ -1,0 +1,68 @@
+// app/editorial-board/page.tsx
+
+'use client';
+
+import { EDITORIAL_MEMBERS } from '@/lib/mockData';
+import Image from 'next/image';
+
+const EditorialBoardPage = () => {
+  const mainMembers = EDITORIAL_MEMBERS.filter(member => !member.simple);
+  const additionalMembers = EDITORIAL_MEMBERS.filter(member => member.simple);
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-10 text-center">Editorial Board</h1>
+
+      {/* Main Editorial Members */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {mainMembers.map(member => (
+          <div key={member.id} className="bg-white rounded-xl shadow p-6">
+            <Image
+              src={member.photoUrl}
+              alt={member.name}
+              width={500}
+              height={300}
+              className="w-full h-60 object-cover rounded-xl mb-4"
+            />
+            <h3 className="text-xl font-semibold">{member.name}</h3>
+            <p className="text-sm text-gray-600">{member.title}</p>
+            <p className="text-sm text-gray-600 italic">{member.role}</p>
+            <p className="text-sm text-gray-600 mb-2">{member.affiliation}</p>
+            <p className="text-sm text-gray-700">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Additional Editorial Members */}
+      {additionalMembers.length > 0 && (
+        <>
+          <h2 className="text-2xl font-semibold mt-16 mb-6 text-center">
+            Additional Editorial Members
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {additionalMembers.map(member => (
+              <div key={member.id} className="bg-gray-50 rounded-xl p-4 shadow-sm">
+                <div className="flex items-center space-x-4">
+                  <Image
+                    src={member.photoUrl}
+                    alt={member.name}
+                    width={70}
+                    height={70}
+                    className="rounded-full object-cover"
+                  />
+                  <div>
+                    <h4 className="text-md font-semibold">{member.name}</h4>
+                    <p className="text-sm text-gray-600">{member.role}</p>
+                    <p className="text-sm text-gray-500">{member.affiliation}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default EditorialBoardPage;
