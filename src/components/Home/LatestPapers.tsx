@@ -26,28 +26,28 @@ const LatestPapers: React.FC<LatestPapersProps> = ({ papers }) => {
     <section className="py-16 bg-gray-70">
       <div className="container mx-auto px-4">
         {/* Conference Inquiry Section */}
-        <div className="bg-[#f7f7f7] p-10 mb-12">
-  <div className="flex justify-between items-start">
-    <div className="text-left max-w-[50%] mt-4">
-    <h2 className="text-4xl font-bold text-[#a0522d] mb-2">
+        <div className="bg-[#f7f7f7] p-6 md:p-10 mb-12">
+  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+    <div className="text-left md:max-w-[50%] mt-2 md:mt-4">
+    <h2 className="text-2xl md:text-4xl font-bold text-[#a0522d] mb-2">
   Conferences Organized by
 </h2>
-<h2 className="text-4xl font-bold text-[#a0522d] mb-2">
+<h2 className="text-2xl md:text-4xl font-bold text-[#a0522d] mb-2">
    BMSD Society!
 </h2>
-      <div className="w-20 h-[3px] bg-[#3498db] mt-5"></div>
+      <div className="w-16 md:w-20 h-[3px] bg-[#3498db] mt-3 md:mt-5"></div>
     </div>
     
     <div className="mb-8">
-      <p className="text-gray-600 max-w-2xl mx-auto mb-6 font-semibold text-lg leading-relaxed">
+      <p className="text-gray-600 md:max-w-2xl mx-auto mb-4 md:mb-6 font-semibold text-base md:text-lg leading-relaxed">
         The <span className="text-[#2c3e50] font-bold">Balaghat Mathematical Sciences Development Society</span> regularly organizes National and International Conferences in collaboration with various colleges and institutions, focusing on{' '}
         <span className="font-bold text-[#2c3e50]">Science and Technology</span>. These conferences aim to foster collaboration and bring together experts from around the world.
       </p>
-      <p className="text-gray-600 max-w-2xl mx-auto mb-6 font-semibold text-lg leading-relaxed">
+      <p className="text-gray-600 md:max-w-2xl mx-auto mb-4 md:mb-6 font-semibold text-base md:text-lg leading-relaxed">
         We welcome funding support from esteemed agencies such as <span className="text-[#2c3e50] font-bold">DST</span>, <span className="text-[#2c3e50] font-bold">UGC</span>, <span className="text-[#2c3e50] font-bold">CSIR</span>, <span className="text-[#2c3e50] font-bold">NBHM</span>, and other government or private organizations to facilitate these conferences.{' '}
         <span className="font-bold text-[#2c3e50]">IJUP members</span> have the opportunity to participate in these events and present their research papers before a global audience of experts.
       </p>
-      <p className="text-gray-600 max-w-2xl mx-auto mb-6 font-semibold text-lg leading-relaxed">
+      <p className="text-gray-600 md:max-w-2xl mx-auto mb-2 md:mb-6 font-semibold text-base md:text-lg leading-relaxed">
         The conferences are held <span className="font-bold text-[#2c3e50]">twice or thrice a year</span> in both <span className="font-bold text-[#2c3e50]">National</span> and <span className="font-bold text-[#2c3e50]">International</span> formats. The objective is to provide an international platform for researchers, scientists, and engineers, and to encourage original research, articles, surveys, and review papers from across the world, fostering the exchange of knowledge and innovations in science and technology.
       </p>
     </div>

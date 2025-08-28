@@ -41,7 +41,7 @@ const disciplines = [
   {
     title: 'Physics & Material Sciences',
     description: 'Advancing our understanding of the universe and material behavior to power innovation in science and technology.',
-    image: '/path/to/image8.jpg', // << UPDATE THIS PATH
+    image: '/Science & Technology.JPG',
   },
   {
     title: 'Zoology & Fishery Sciences',
@@ -85,16 +85,16 @@ const Disciplines: React.FC = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {disciplines.map((discipline, index) => (
             <motion.div
               key={index}
               variants={item}
-              className="border border-gray-200 rounded-lg p-6 hover:border-primary-500 hover:shadow-md transition-all duration-300 flex items-center"
+              className="border border-gray-200 rounded-lg p-6 hover:border-primary-500 hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row items-center gap-4"
             >
               {/* Left Side - Title and Description */}
-              <div className="flex flex-col w-1/2 pr-6">
+              <div className="flex flex-col w-full sm:w-1/2 sm:pr-6">
                 <div className="h-12 w-12 flex items-center justify-center bg-primary-100 text-primary-700 rounded-full mb-4 font-bold text-xl">
                   {discipline.title.charAt(0)}
                 </div>
@@ -105,12 +105,12 @@ const Disciplines: React.FC = () => {
               </div>
               
               {/* Right Side - Image */}
-              <div className="w-1/2">
+              <div className="w-full sm:w-1/2">
                 {/* --- THIS IS THE CORRECTED LINE --- */}
                 <img 
                   src={discipline.image} 
                   alt={discipline.title} 
-                  className="rounded-lg object-cover w-full h-full" 
+                  className="rounded-lg object-cover w-full h-40 sm:h-full" 
                 />
               </div>
             </motion.div>

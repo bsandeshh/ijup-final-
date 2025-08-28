@@ -5,19 +5,7 @@ import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative h-screen flex items-center bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 text-white overflow-hidden">
-
-      {/* Background video */}
-      <video 
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="imgs/3196061-uhd_3840_2160_25fps.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <section className="relative min-h-[85vh] md:min-h-screen flex items-center bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 text-white overflow-hidden">
 
       {/* Gradient overlay */}
       <motion.div 
