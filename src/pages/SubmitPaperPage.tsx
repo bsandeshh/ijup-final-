@@ -123,11 +123,11 @@ const SubmitPaperPage: React.FC = () => {
               >
                 {/* Progress Steps */}
                 <div className="mb-12">
-                  <div className="flex items-center justify-between">
+                  <div className="grid grid-cols-3 gap-4 sm:flex sm:items-center sm:justify-between">
                     {[1, 2, 3].map((step) => (
-                      <motion.div key={step} variants={itemVariants} className="flex flex-col items-center">
+                      <motion.div key={step} variants={itemVariants} className="flex flex-col items-center text-center">
                         <div
-                          className={`h-12 w-12 rounded-full flex items-center justify-center text-lg font-bold mb-2
+                          className={`h-10 w-10 sm:h-12 sm:w-12 rounded-full flex items-center justify-center text-base sm:text-lg font-bold mb-2
                           ${
                             currentStep === step
                               ? 'bg-accent-600 text-white shadow-lg'
@@ -138,13 +138,13 @@ const SubmitPaperPage: React.FC = () => {
                         >
                           {step}
                         </div>
-                        <div className="text-sm font-semibold text-white">
-                          {step === 1 ? 'Author Details' : step === 2 ? 'Paper Information' : 'Upload Manuscript'}
+                        <div className="text-xs sm:text-sm font-semibold text-white leading-tight">
+                          {step === 1 ? 'Author Details' : step === 2 ? 'Paper Info' : 'Upload PDF'}
                         </div>
                       </motion.div>
                     ))}
                   </div>
-                  <div className="relative mt-4">
+                  <div className="relative mt-4 hidden sm:block">
                     <div className="absolute top-0 left-0 w-full h-1 bg-white/20 rounded-full">
                       <motion.div
                         className="absolute top-0 left-0 h-1 bg-accent-500 rounded-full"

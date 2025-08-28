@@ -111,11 +111,11 @@ const EditorialBoardPage: React.FC = () => {
               whileHover={{ scale: 1.02, y: -5 }}
             >
               <div className="md:flex">
-                <div className="md:w-1/3 bg-accent-50 overflow-hidden rounded-l-full flex items-center justify-center">
+                <div className="md:w-1/3 bg-accent-50 overflow-hidden md:rounded-l-full rounded-t-xl md:rounded-t-none flex items-center justify-center">
                   <motion.img 
                     src={member.photoUrl} 
                     alt={member.name} 
-                    className="h-full w-full object-cover object-center"
+                    className="h-48 md:h-full w-full object-cover object-center"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   />

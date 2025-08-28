@@ -14,7 +14,7 @@ const NotFoundPage: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="mb-8">
-            <span className="text-9xl font-bold text-primary-200">404</span>
+            <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-primary-200">404</span>
           </div>
           
           <h1 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-4">

@@ -163,75 +163,75 @@ const AboutPage: React.FC = () => {
                 animate="visible"
               >
                 <motion.li 
-                  className="flex items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
+                  className="flex flex-col sm:flex-row sm:items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
                   variants={itemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-gray-800 w-40 font-medium">Title</span>
-                  <span className="text-gray-800 mx-2">:</span>
+                  <span className="text-gray-800 sm:w-40 font-medium">Title</span>
+                  <span className="hidden sm:inline text-gray-800 mx-2">:</span>
                   <span className="font-bold text-accent-700">{JOURNAL_INFO.title}</span>
                 </motion.li>
                 <motion.li 
-                  className="flex items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
+                  className="flex flex-col sm:flex-row sm:items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
                   variants={itemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-gray-800 w-40 font-medium">ISSN</span>
-                  <span className="text-gray-800 mx-2">:</span>
+                  <span className="text-gray-800 sm:w-40 font-medium">ISSN</span>
+                  <span className="hidden sm:inline text-gray-800 mx-2">:</span>
                   <span className="font-bold text-accent-700">2354-7463</span>
                 </motion.li>
                 <motion.li 
-                  className="flex items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
+                  className="flex flex-col sm:flex-row sm:items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
                   variants={itemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-gray-800 w-40 font-medium">Frequency</span>
-                  <span className="text-gray-800 mx-2">:</span>
+                  <span className="text-gray-800 sm:w-40 font-medium">Frequency</span>
+                  <span className="hidden sm:inline text-gray-800 mx-2">:</span>
                   <span className="font-bold text-accent-700">Two Volumes Per Year</span>
                 </motion.li>
                 <motion.li 
-                  className="flex items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
+                  className="flex flex-col sm:flex-row sm:items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
                   variants={itemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-gray-800 w-40 font-medium">Open Access</span>
-                  <span className="text-gray-800 mx-2">:</span>
+                  <span className="text-gray-800 sm:w-40 font-medium">Open Access</span>
+                  <span className="hidden sm:inline text-gray-800 mx-2">:</span>
                   <span className="font-bold text-accent-700">Yes (CC BY 4.0 License)</span>
                 </motion.li>
                 <motion.li 
-                  className="flex items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
+                  className="flex flex-col sm:flex-row sm:items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
                   variants={itemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-gray-800 w-40 font-medium">Publication Fee</span>
-                  <span className="text-gray-800 mx-2">:</span>
+                  <span className="text-gray-800 sm:w-40 font-medium">Publication Fee</span>
+                  <span className="hidden sm:inline text-gray-800 mx-2">:</span>
                   <span className="font-bold text-accent-700">INR 2099 (Intl. Authors $100)</span>
                 </motion.li>
                 <motion.li 
-                  className="flex items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
+                  className="flex flex-col sm:flex-row sm:items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
                   variants={itemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-gray-800 w-40 font-medium">Membership Fee</span>
-                  <span className="text-gray-800 mx-2">:</span>
+                  <span className="text-gray-800 sm:w-40 font-medium">Membership Fee</span>
+                  <span className="hidden sm:inline text-gray-800 mx-2">:</span>
                   <span className="font-bold text-accent-700">INR 999  ( Intl. Authors 20$)</span>
                 </motion.li>
                 <motion.li 
-                  className="flex items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
+                  className="flex flex-col sm:flex-row sm:items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
                   variants={itemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-gray-800 w-40 font-medium">Review Process</span>
-                  <span className="text-gray-800 mx-2">:</span>
+                  <span className="text-gray-800 sm:w-40 font-medium">Review Process</span>
+                  <span className="hidden sm:inline text-gray-800 mx-2">:</span>
                   <span className="font-bold text-accent-700">Double-blind peer review</span>
                 </motion.li>
                 <motion.li 
-                  className="flex items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
+                  className="flex flex-col sm:flex-row sm:items-center p-3 rounded-lg hover:bg-accent-50/50 transition-colors duration-200"
                   variants={itemVariants}
                   whileHover={{ x: 5 }}
                 >
-                  <span className="text-gray-800 w-40 font-medium">Acceptance Rate</span>
-                  <span className="text-gray-800 mx-2">:</span>
+                  <span className="text-gray-800 sm:w-40 font-medium">Acceptance Rate</span>
+                  <span className="hidden sm:inline text-gray-800 mx-2">:</span>
                   <span className="font-bold text-accent-700">72% (2024)</span>
                 </motion.li>
               </motion.ul>

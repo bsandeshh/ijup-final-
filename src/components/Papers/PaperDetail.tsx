@@ -42,7 +42,7 @@ const PaperDetail: React.FC<PaperDetailProps> = ({ paper }) => {
             <Users size={20} className="mr-2 text-primary-700" />
             <h2 className="text-xl font-medium">Authors</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {paper.authors.map((author) => (
               <div 
                 key={author.id} 
