@@ -2,60 +2,64 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react'; // arrow icon from lucide-react
 
+// No need to import images from the public folder. We will reference them directly.
+
 const disciplines = [
   {
     title: 'Sciences & Technology',
     description:
       'Advancing research and innovation across all branches of engineering to solve real-world challenges and drive technological progress.',
-    image: '/Users/sandeshbellale/Downloads/college-web/public/ijup/public/01.Science & Technology.JPG', // Placeholder for images
+    // Correct Path: Starts with '/' to reference the public folder root.
+    image: '/01.Science & Technology.jpg', 
   },
   {
     title: 'Mathematics and Mathematical Sciences',
     description:
       'Driving innovation through foundational and applied mathematical research across diverse scientific domains.',
-    image: '/Users/sandeshbellale/Downloads/college-web/public/ijup/public/02.Mathmatics & Mathmatics Sciences.JPG',
+    image: '/02.Mathmatics & Mathmatics Sciences.JPG',
   },
   {
     title: 'Business & Management Sciences',
     description:
       'Empowering strategic decision-making through advanced research in global business, economics, and organizational leadership.',
-    image: '/Users/sandeshbellale/Downloads/college-web/public/ijup/public/08.Bussiness &  Management Sciences.JPG',
+    image: '/08.Bussiness &  Management Sciences.JPG',
   },
   {
     title: 'Chemistry & Industrial Chemistry',
     description:
       'Exploring the molecular sciences to fuel breakthroughs in materials, energy, and sustainable industrial solutions.',
-    image: '/Users/sandeshbellale/Downloads/college-web/public/ijup/public/05.Chemistry & Indistrial Chemistry.JPG',
+    image: '/05.Chemistry & Indistrial Chemistry.JPG',
   },
   {
     title: 'Electronic & Computer Sciences',
     description:
       'Engineering next-generation technologies through cutting-edge research in electronics, embedded systems, and computation.',
-    image: '/Users/sandeshbellale/Downloads/college-web/public/ijup/public/04.Elelctronic & Computer Science  ..jpg',
+    image: '/04.Elelctronic & Computer Science  ..jpg',
   },
   {
     title: 'History & Geographic Sciences',
     description:
       'Uncovering patterns of human development and spatial dynamics through historical analysis and geographic research.',
-    image: '/Users/sandeshbellale/Downloads/college-web/public/ijup/public/10.History.JPG',
+    image: '/10.History.JPG',
   },
   {
     title: 'Botany & Microbiology',
     description:
       'Innovating in life sciences with research in plant biology, microbial ecosystems, and environmental biotechnology.',
-    image: '/Users/sandeshbellale/Downloads/college-web/public/ijup/public/06.Botany & Microbiology..jpg',
+    image: '/06.Botany & Microbiology..jpg',
   },
   {
     title: 'Physics & Material Sciences',
     description:
       'Advancing our understanding of the universe and material behavior to power innovation in science and technology.',
-    image: '/path/to/image8.jpg',
+    // You'll need to add the correct filename for this one.
+    image: '/path/to/image8.jpg', // << UPDATE THIS PATH
   },
   {
     title: 'Zoology & Fishery Sciences',
     description: 
       'Enhancing biodiversity knowledge and sustainable practices through research in animal sciences and aquatic systems.',
-    image: '/Users/sandeshbellale/Downloads/college-web/public/ijup/public/07.Zoology & Fishery Scinces.JPG',
+    image: '/07.Zoology & Fishery Scinces.JPG',
   },
 ];
 
@@ -115,7 +119,11 @@ const Disciplines: React.FC = () => {
               
               {/* Right Side - Image */}
               <div className="w-1/2">
-                <img src={discipline.image} alt={discipline.title} className="rounded-lg object-cover w-full h-full" />
+                <img 
+                  src={process.env.PUBLIC_URL + discipline.image} 
+                  alt={discipline.title} 
+                  className="rounded-lg object-cover w-full h-full" 
+                />
               </div>
             </motion.div>
           ))}
