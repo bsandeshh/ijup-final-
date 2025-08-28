@@ -26,7 +26,7 @@ const disciplines = [
   {
     title: 'Electronic & Computer Sciences',
     description: 'Engineering next-generation technologies through cutting-edge research in electronics, embedded systems, and computation.',
-    image: '/04.Elelctronic & Computer Science  ..jpg',
+    image: '/04.Elelctronic & Computer Science.jpg',
   },
   {
     title: 'History & Geographic Sciences',
