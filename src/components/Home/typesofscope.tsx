@@ -6,7 +6,7 @@ const disciplines = [
   {
     title: 'Sciences & Technology',
     description: 'Advancing research and innovation across all branches of engineering to solve real-world challenges and drive technological progress.',
-    image: '/01.Science & Technology.jpg', 
+    image: '/Science & Technology.JPG', 
   },
   {
     title: 'Mathematics and Mathematical Sciences',
