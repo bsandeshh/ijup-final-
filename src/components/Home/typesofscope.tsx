@@ -1,64 +1,51 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react'; // arrow icon from lucide-react
-
-// No need to import images from the public folder. We will reference them directly.
+import { ArrowRight } from 'lucide-react';
 
 const disciplines = [
   {
     title: 'Sciences & Technology',
-    description:
-      'Advancing research and innovation across all branches of engineering to solve real-world challenges and drive technological progress.',
-    // Correct Path: Starts with '/' to reference the public folder root.
+    description: 'Advancing research and innovation across all branches of engineering to solve real-world challenges and drive technological progress.',
     image: '/01.Science & Technology.jpg', 
   },
   {
     title: 'Mathematics and Mathematical Sciences',
-    description:
-      'Driving innovation through foundational and applied mathematical research across diverse scientific domains.',
+    description: 'Driving innovation through foundational and applied mathematical research across diverse scientific domains.',
     image: '/02.Mathmatics & Mathmatics Sciences.JPG',
   },
   {
     title: 'Business & Management Sciences',
-    description:
-      'Empowering strategic decision-making through advanced research in global business, economics, and organizational leadership.',
+    description: 'Empowering strategic decision-making through advanced research in global business, economics, and organizational leadership.',
     image: '/08.Bussiness &  Management Sciences.JPG',
   },
   {
     title: 'Chemistry & Industrial Chemistry',
-    description:
-      'Exploring the molecular sciences to fuel breakthroughs in materials, energy, and sustainable industrial solutions.',
+    description: 'Exploring the molecular sciences to fuel breakthroughs in materials, energy, and sustainable industrial solutions.',
     image: '/05.Chemistry & Indistrial Chemistry.JPG',
   },
   {
     title: 'Electronic & Computer Sciences',
-    description:
-      'Engineering next-generation technologies through cutting-edge research in electronics, embedded systems, and computation.',
+    description: 'Engineering next-generation technologies through cutting-edge research in electronics, embedded systems, and computation.',
     image: '/04.Elelctronic & Computer Science  ..jpg',
   },
   {
     title: 'History & Geographic Sciences',
-    description:
-      'Uncovering patterns of human development and spatial dynamics through historical analysis and geographic research.',
+    description: 'Uncovering patterns of human development and spatial dynamics through historical analysis and geographic research.',
     image: '/10.History.JPG',
   },
   {
     title: 'Botany & Microbiology',
-    description:
-      'Innovating in life sciences with research in plant biology, microbial ecosystems, and environmental biotechnology.',
+    description: 'Innovating in life sciences with research in plant biology, microbial ecosystems, and environmental biotechnology.',
     image: '/06.Botany & Microbiology..jpg',
   },
   {
     title: 'Physics & Material Sciences',
-    description:
-      'Advancing our understanding of the universe and material behavior to power innovation in science and technology.',
-    // You'll need to add the correct filename for this one.
+    description: 'Advancing our understanding of the universe and material behavior to power innovation in science and technology.',
     image: '/path/to/image8.jpg', // << UPDATE THIS PATH
   },
   {
     title: 'Zoology & Fishery Sciences',
-    description: 
-      'Enhancing biodiversity knowledge and sustainable practices through research in animal sciences and aquatic systems.',
+    description: 'Enhancing biodiversity knowledge and sustainable practices through research in animal sciences and aquatic systems.',
     image: '/07.Zoology & Fishery Scinces.JPG',
   },
 ];
@@ -119,8 +106,9 @@ const Disciplines: React.FC = () => {
               
               {/* Right Side - Image */}
               <div className="w-1/2">
+                {/* --- THIS IS THE CORRECTED LINE --- */}
                 <img 
-                  src={process.env.PUBLIC_URL + discipline.image} 
+                  src={discipline.image} 
                   alt={discipline.title} 
                   className="rounded-lg object-cover w-full h-full" 
                 />
