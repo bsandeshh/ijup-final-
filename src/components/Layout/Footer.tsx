@@ -89,32 +89,70 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 text-sm">UGC Approved No.: 62813</p>
 
             <div className="flex space-x-4 mt-4">
-              {['facebook', 'twitter', 'linkedin'].map((_, i) => (
-                <motion.a
-                  key={i}
-                  href="#"
-                  whileHover={{ scale: 1.1, color: '#a7f3d0' }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                  className="text-gray-300 hover:text-teal-300 transition-colors duration-300"
+              {/* Facebook */}
+              <motion.a
+                href="https://www.facebook.com/share/1B6vSHtuNn/"
+                aria-label="Follow on Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, color: '#a7f3d0' }}
+                transition={{ type: 'spring', stiffness: 300 }}
+                className="text-gray-300 hover:text-teal-300 transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
                 >
-                  {/* Placeholder SVG icons */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="16" />
-                    <line x1="8" y1="12" x2="16" y2="12" />
-                  </svg>
-                </motion.a>
-              ))}
+                  <path d="M22.675 0h-21.35C.595 0 0 .595 0 1.325v21.351C0 23.405.595 24 1.325 24H12.82V14.706H9.692V11.23h3.128V8.413c0-3.1 1.893-4.788 4.66-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.765v2.316h3.59l-.467 3.476h-3.123V24h6.127C23.405 24 24 23.405 24 22.676V1.325C24 .595 23.405 0 22.675 0z" />
+                </svg>
+              </motion.a>
+
+              {/* Instagram */}
+              <motion.a
+                href="https://www.instagram.com/ijuniversalprint_?igsh=OHVuZ3hzdzc3N3g0"
+                aria-label="Follow on Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, color: '#a7f3d0' }}
+                transition={{ type: 'spring', stiffness: 300 }}
+                className="text-gray-300 hover:text-teal-300 transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.427.403a4.92 4.92 0 0 1 1.78 1.153 4.92 4.92 0 0 1 1.153 1.78c.163.457.347 1.257.403 2.427.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.403 2.427a4.92 4.92 0 0 1-1.153 1.78 4.92 4.92 0 0 1-1.78 1.153c-.457.163-1.257.347-2.427.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.427-.403a4.92 4.92 0 0 1-1.78-1.153 4.92 4.92 0 0 1-1.153-1.78c-.163-.457-.347-1.257-.403-2.427C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.97.403-2.427a4.92 4.92 0 0 1 1.153-1.78 4.92 4.92 0 0 1 1.78-1.153c.457-.163 1.257-.347 2.427-.403C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.741 0 8.332.014 7.052.072 5.775.13 4.897.304 4.158.555A7.08 7.08 0 0 0 1.44 1.44 7.08 7.08 0 0 0 .555 4.158c-.251.739-.425 1.617-.483 2.894C.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.058 1.277.232 2.155.483 2.894a7.08 7.08 0 0 0 .885 2.718 7.08 7.08 0 0 0 2.718.885c.739.251 1.617.425 2.894.483C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.058 2.155-.232 2.894-.483a7.08 7.08 0 0 0 2.718-.885 7.08 7.08 0 0 0 .885-2.718c.251-.739.425-1.617.483-2.894.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.058-1.277-.232-2.155-.483-2.894a7.08 7.08 0 0 0-.885-2.718A7.08 7.08 0 0 0 19.842.555c-.739-.251-1.617-.425-2.894-.483C15.668.014 15.259 0 12 0z" />
+                  <path d="M12 5.838A6.162 6.162 0 1 0 18.162 12 6.169 6.169 0 0 0 12 5.838zm0 10.162A3.999 3.999 0 1 1 16 12a3.999 3.999 0 0 1-4 4z" />
+                  <circle cx="18.406" cy="5.594" r="1.44" />
+                </svg>
+              </motion.a>
+
+              {/* YouTube */}
+              <motion.a
+                href="#"
+                aria-label="Follow on YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, color: '#a7f3d0' }}
+                transition={{ type: 'spring', stiffness: 300 }}
+                className="text-gray-300 hover:text-teal-300 transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M23.499 6.203a3.006 3.006 0 0 0-2.115-2.128C19.468 3.5 12 3.5 12 3.5s-7.468 0-9.384.575A3.006 3.006 0 0 0 .501 6.203C0 8.128 0 12 0 12s0 3.872.501 5.797a3.006 3.006 0 0 0 2.115 2.128C4.532 20.5 12 20.5 12 20.5s7.468 0 9.384-.575a3.006 3.006 0 0 0 2.115-2.128C24 15.872 24 12 24 12s0-3.872-.501-5.797zM9.75 15.021V8.979L15.545 12 9.75 15.021z" />
+                </svg>
+              </motion.a>
             </div>
           </motion.div>
 

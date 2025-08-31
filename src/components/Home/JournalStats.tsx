@@ -24,8 +24,8 @@ const JournalStats: React.FC = () => {
     },
     {
       icon: <Clock className="h-10 w-10 text-accent-500" />,
-      value: '2-3',
-      label: 'Weeks to Decision',
+      value: '4-5',
+      label: 'Days to Decision',
       description: 'Efficient review process'
     }
   ];

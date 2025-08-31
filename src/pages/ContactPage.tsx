@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock4 } from 'lucide-react';
 import PageLayout from '../components/Layout/PageLayout';
+import LogoSection from '../components/Layout/LogoSection';
 
 const ContactPage: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -290,6 +291,11 @@ const ContactPage: React.FC = () => {
               </motion.p>
             </div>
           </motion.div>
+        </div>
+
+        {/* Logo Section */}
+        <div className="mt-16">
+          <LogoSection />
         </div>
       </div>
     </PageLayout>

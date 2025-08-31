@@ -100,14 +100,9 @@ const Header: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-2">
-          <img src="/IJUP-removebg-preview.png" alt="IJUP Logo" className="h-8 w-auto" />
-          <span
-            ref={titleRef}
-            className={`font-serif font-bold text-xl ${
-              isScrolled ? 'text-gray-800' : 'text-gray-700'
-            }`}
-          >
+                <Link to="/" className="flex items-center space-x-2">
+          <img src="/Ijup.logo.png" alt="IJUP Logo" className="h-8 w-auto" />
+          <span className="font-serif font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-accent-300 to-accent-500">
             IJUP
           </span>
         </Link>

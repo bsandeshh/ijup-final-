@@ -219,11 +219,11 @@ const ReviewerGuidelinesPage: React.FC = () => {
                 >
                   <motion.li variants={itemVariants}>
                     <span className="font-medium text-accent-600">Initial Response:</span> Please respond within 
-                    <strong> 7 days</strong> to confirm your availability to review the manuscript.
+                    <strong> 2 days</strong> to confirm your availability to review the manuscript.
                   </motion.li>
                   <motion.li variants={itemVariants}>
                     <span className="font-medium text-accent-600">Review Completion:</span> Complete your review within 
-                    <strong> 3-4 weeks</strong> from the date of acceptance.
+                    <strong> 4-5 days</strong> from the date of acceptance.
                   </motion.li>
                   <motion.li variants={itemVariants}>
                     <span className="font-medium text-accent-600">Extension Requests:</span> If you need more time, 

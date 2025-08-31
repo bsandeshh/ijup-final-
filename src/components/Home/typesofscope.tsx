@@ -1,52 +1,53 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import CoverPagesViewer from './CoverPagesViewer';
 
 const disciplines = [
   {
     title: 'Sciences & Technology',
     description: 'Advancing research and innovation across all branches of engineering to solve real-world challenges and drive technological progress.',
-    image: '/Science & Technology.JPG', 
+    image: '/cover.pages/Science & Technology.JPG', 
   },
   {
     title: 'Mathematics and Mathematical Sciences',
     description: 'Driving innovation through foundational and applied mathematical research across diverse scientific domains.',
-    image: '/02.Mathmatics & Mathmatics Sciences.JPG',
+    image: '/cover.pages/02.Mathmatics & Mathmatics Sciences.JPG',
   },
   {
     title: 'Business & Management Sciences',
     description: 'Empowering strategic decision-making through advanced research in global business, economics, and organizational leadership.',
-    image: '/08.Bussiness &  Management Sciences.JPG',
+    image: '/cover.pages/08.Bussiness &  Management Sciences.JPG',
   },
   {
     title: 'Chemistry & Industrial Chemistry',
     description: 'Exploring the molecular sciences to fuel breakthroughs in materials, energy, and sustainable industrial solutions.',
-    image: '/05.Chemistry & Indistrial Chemistry.JPG',
+    image: '/cover.pages/05.Chemistry & Indistrial Chemistry.JPG',
   },
   {
     title: 'Electronic & Computer Sciences',
     description: 'Engineering next-generation technologies through cutting-edge research in electronics, embedded systems, and computation.',
-    image: '/04.Elelctronic & Computer Science.jpg',
+    image: '/cover.pages/04.Elelctronic & Computer Science.jpg',
   },
   {
     title: 'History & Geographic Sciences',
     description: 'Uncovering patterns of human development and spatial dynamics through historical analysis and geographic research.',
-    image: '/10.History.JPG',
+    image: '/cover.pages/10.History.JPG',
   },
   {
     title: 'Botany & Microbiology',
     description: 'Innovating in life sciences with research in plant biology, microbial ecosystems, and environmental biotechnology.',
-    image: '/06.Botany & Microbiology..jpg',
+    image: '/cover.pages/06.Botany & Microbiology..jpg',
   },
   {
     title: 'Physics & Material Sciences',
     description: 'Advancing our understanding of the universe and material behavior to power innovation in science and technology.',
-    image: '/Science & Technology.JPG',
+    image: '/cover.pages/Science & Technology.JPG',
   },
   {
     title: 'Zoology & Fishery Sciences',
     description: 'Enhancing biodiversity knowledge and sustainable practices through research in animal sciences and aquatic systems.',
-    image: '/07.Zoology & Fishery Scinces.JPG',
+    image: '/cover.pages/07.Zoology & Fishery Scinces.JPG',
   },
 ];
 
@@ -117,12 +118,9 @@ const Disciplines: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* View Cover Page Button */}
+        {/* Cover Pages Viewer */}
         <div className="mt-12 text-center">
-          <button className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors duration-300">
-            View Cover Pages
-            <ArrowRight className="w-5 h-5" />
-          </button>
+          <CoverPagesViewer />
         </div>
       </div>
     </section>

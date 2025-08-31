@@ -42,7 +42,7 @@ const FaqPage: React.FC = () => {
     {
       question: "How long does the peer review process take?",
       answer:
-        "Our goal is to provide authors with a first decision within 4-6 weeks of submission. The complete process, from submission to final decision, typically takes 2-3 months, depending on the availability of reviewers and the extent of any revisions required. We strive to maintain a balance between thoroughness and efficiency in our review process.",
+        "Our goal is to provide authors with a first decision within 4-5 days of submission. The complete process, from submission to final decision, typically takes 4-5 days, depending on the availability of reviewers and the extent of any revisions required. We strive to maintain a balance between thoroughness and efficiency in our review process.",
     },
     {
       question: "Is there a publication fee?",

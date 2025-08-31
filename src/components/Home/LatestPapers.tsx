@@ -52,9 +52,37 @@ const LatestPapers: React.FC<LatestPapersProps> = ({ papers }) => {
       </p>
     </div>
   </div>
-</div>
+        </div>
 
-       
+        {/* Latest Updates Section */}
+        <div className="mb-12 -mx-4 -mt-16 pt-16">
+          <div className="bg-primary-900 text-white p-6">
+            <div className="container mx-auto px-4">
+              <div className="flex items-center space-x-6">
+                <div className="bg-orange-500 p-3 rounded-full flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="font-semibold text-xl flex-shrink-0">Latest Updates</span>
+                <div className="overflow-hidden flex-1">
+                  <motion.div 
+                    className="flex space-x-8 whitespace-nowrap text-lg"
+                    animate={{ x: [200, -300] }}
+                    transition={{ 
+                      duration: 12, 
+                      repeat: Infinity, 
+                      ease: "linear" 
+                    }}
+                  >
+                    <span className="text-orange-200 font-bold">→</span>
+                    <span className="text-white">A call for papers, open to all branches of study, has been announced for the next issue.</span>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Latest Publications Section */}
         <div className="mb-12 text-center">

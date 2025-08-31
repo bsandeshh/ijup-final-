@@ -101,7 +101,7 @@ export const EDITORIAL_MEMBERS: EditorialMember[] = [
     affiliation: ' Dayanand Science Collage, Latur',
     role: 'Editor-in-Chief',
     bio: 'Mathematician with 26+ years of expertise in Nonlinear Analysis, with nearly 58 international publications across the USA, Europe, Singapore, Australia, and more. Founder of BMSD Society, promoting research and education for over 22 years.',
-    photoUrl: '/s s bellale photo.jpg',
+    photoUrl: '/ediotrial.board pic/s s bellale photo.jpg',
     email: 'sidhesh.bellale@gmail.com'
   },
   {
@@ -111,7 +111,7 @@ export const EDITORIAL_MEMBERS: EditorialMember[] = [
     affiliation: 'Dayanand Science Collage, Latur',
     role: 'Editor-in-Chief',
     bio: 'With nearly 29 years as a Principal, expert in Science, Technology, and Educational Management, skilled in leadership and driving academic excellence.',
-    photoUrl: '/dargad photo.jpg',
+    photoUrl: '/ediotrial.board pic/dargad photo.jpg',
     email: 'jsdargad@rediffmail.com'
   },
   {
@@ -121,7 +121,7 @@ export const EDITORIAL_MEMBERS: EditorialMember[] = [
     affiliation: 'VIT, Pune',
     role: 'Managing Editor',
     bio: 'Responsible for managing and leading the entire team, overseeing all operations and processes of the International Journal of Universal Print (IJUP) to ensure smooth publication and quality control.',
-    photoUrl: '/sandesh photo.jpg',
+    photoUrl: '/ediotrial.board pic/sandesh photo.jpg',
     email: 'sandeshbellale2020@gmail.com'
   },
   {
@@ -141,7 +141,7 @@ export const EDITORIAL_MEMBERS: EditorialMember[] = [
     affiliation: 'Head, Physics Dept. at Dayanaand Science Collage, latur',
     role: 'Section Editor',
     bio: 'A retired professor with about 38 years of rich academic experience, now actively engaged in exploring new avenues of research. With a strong foundation in teaching and scholarly work, currently focused on contributing to advanced research and knowledge creation in the field.',
-    photoUrl: '/Science & Technology cover page 2.JPG',
+    photoUrl: '/cover.pages/Science & Technology.JPG',
     email: 'thakrelalit@yahoo.com'
   },
   {
@@ -151,7 +151,7 @@ export const EDITORIAL_MEMBERS: EditorialMember[] = [
     affiliation: 'Kyungnam University Masan Kyungnam, South-Korea.',
     role: 'Section Editor',
     bio: 'Renowned Korean mathematician with 40+ years of expertise in Constructive Mathematical Analysis. Known for advancing rigorous methods in real analysis and logic, he remains an influential figure in global mathematical research.',
-    photoUrl: '/j k kim photo.jpg',
+    photoUrl: '/ediotrial.board pic/j k kim photo.jpg',
     email: 'jongkyuk@kyungnam.ac.kr'
   }
 

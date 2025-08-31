@@ -3,6 +3,7 @@ import { Mail, ExternalLink } from 'lucide-react';
 import PageLayout from '../components/Layout/PageLayout';
 import { EDITORIAL_MEMBERS } from '../data/mockData';
 import { motion } from 'framer-motion';
+import LogoSection from '../components/Layout/LogoSection';
 
 const EditorialBoardPage: React.FC = () => {
   const container = {
@@ -480,6 +481,11 @@ const EditorialBoardPage: React.FC = () => {
 
           </motion.div>
         </motion.div>
+
+        {/* Logo Section */}
+        <div className="mt-16">
+          <LogoSection />
+        </div>
 
       </div>
     </PageLayout>

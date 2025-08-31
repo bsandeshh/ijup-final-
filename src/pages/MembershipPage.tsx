@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Users, CheckCircle, Star, Send } from 'lucide-react';
 import PageLayout from '../components/Layout/PageLayout';
 import { motion } from 'framer-motion';
+import LogoSection from '../components/Layout/LogoSection';
 
 const MembershipPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -442,6 +443,11 @@ const MembershipPage: React.FC = () => {
             </motion.a>
           </div>
         </motion.div>
+
+        {/* Logo Section */}
+        <div className="mt-16">
+          <LogoSection />
+        </div>
       </div>
     </PageLayout>
   );

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Award, Target, BookOpen } from 'lucide-react';
 import PageLayout from '../components/Layout/PageLayout';
 import { JOURNAL_INFO } from '../data/mockData';
+import LogoSection from '../components/Layout/LogoSection';
 
 const AboutPage: React.FC = () => {
   const containerVariants = {
@@ -405,6 +406,10 @@ const AboutPage: React.FC = () => {
             </motion.div>
           </motion.section>
 
+          {/* Logo Section */}
+          <div className="mt-16">
+            <LogoSection />
+          </div>
 
         </div>
       </motion.div>
