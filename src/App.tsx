@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
+import { AuthProvider } from './context/AuthContext';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -20,26 +21,28 @@ import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <AppProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/browse" element={<BrowsePapersPage />} />
-          <Route path="/paper/:id" element={<PaperDetailPage />} />
-          <Route path="/submit" element={<SubmitPaperPage />} />
-          <Route path="/editorial-board" element={<EditorialBoardPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/author-guidelines" element={<AuthorGuidelinesPage />} />
-          <Route path="/reviewer-guidelines" element={<ReviewerGuidelinesPage />} />
-          <Route path="/ethics" element={<EthicsPage />} />
-          <Route path="/faq" element={<FaqPage />} />
-          <Route path="/archives" element={<ArchivesPage />} />
-          <Route path="/membership" element={<MembershipPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Router>
-    </AppProvider>
+    <AuthProvider>
+      <AppProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/browse" element={<BrowsePapersPage />} />
+            <Route path="/paper/:id" element={<PaperDetailPage />} />
+            <Route path="/submit" element={<SubmitPaperPage />} />
+            <Route path="/editorial-board" element={<EditorialBoardPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/author-guidelines" element={<AuthorGuidelinesPage />} />
+            <Route path="/reviewer-guidelines" element={<ReviewerGuidelinesPage />} />
+            <Route path="/ethics" element={<EthicsPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+            <Route path="/archives" element={<ArchivesPage />} />
+            <Route path="/membership" element={<MembershipPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Router>
+      </AppProvider>
+    </AuthProvider>
   );
 }
 
