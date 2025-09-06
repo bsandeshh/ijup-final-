@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Paper } from '../types';
 import { MOCK_PAPERS } from '../data/mockData';
+import { supabase } from '../lib/supabase';
 
 interface AppContextType {
   papers: Paper[];
@@ -10,6 +11,7 @@ interface AppContextType {
   logout: () => void;
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  supabase: typeof supabase;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -36,6 +38,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         logout,
         searchTerm,
         setSearchTerm,
+        supabase,
       }}
     >
       {children}

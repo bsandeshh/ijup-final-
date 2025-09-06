@@ -7,9 +7,17 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "supabase:start": "npx supabase start",
+    "supabase:stop": "npx supabase stop",
+    "supabase:status": "npx supabase status",
+    "supabase:reset": "npx supabase db reset",
+    "supabase:gen-types": "npx supabase gen types typescript --local > src/lib/database.types.ts",
+    "supabase:migrate": "npx supabase db push",
+    "supabase:studio": "npx supabase studio"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.2",
     "framer-motion": "^11.0.12",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
