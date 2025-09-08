@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from '../lib/supabase';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock4 } from 'lucide-react';
 import PageLayout from '../components/Layout/PageLayout';
@@ -6,10 +7,40 @@ import LogoSection from '../components/Layout/LogoSection';
 
 const ContactPage: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setErrorMessage(null);
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert({
+          name,
+          email,
+          subject,
+          message,
+        });
+
+      if (error) {
+        throw error;
+      }
+      setFormSubmitted(true);
+      setName('');
+      setEmail('');
+      setSubject('');
+      setMessage('');
+    } catch (err: any) {
+      setErrorMessage(err?.message || 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -115,19 +146,50 @@ const ContactPage: React.FC = () => {
 
               {!formSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  {['name', 'email', 'subject'].map((field) => (
-                    <div key={field}>
-                      <label htmlFor={field} className="block text-sm font-medium text-gray-700 mb-1 capitalize">
-                        {field.replace('-', ' ')}*
-                      </label>
-                      <input
-                        id={field}
-                        type={field === 'email' ? 'email' : 'text'}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                        required
-                      />
-                    </div>
-                  ))}
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1 capitalize">
+                      Name*
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1 capitalize">
+                      Email*
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1 capitalize">
+                      Subject*
+                    </label>
+                    <input
+                      id="subject"
+                      type="text"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                      required
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      disabled={isSubmitting}
+                    />
+                  </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
@@ -138,17 +200,25 @@ const ContactPage: React.FC = () => {
                       rows={5}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                       required
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      disabled={isSubmitting}
                     />
                   </div>
 
+                  {errorMessage && (
+                    <div className="text-red-600 text-sm font-medium">{errorMessage}</div>
+                  )}
+
                   <motion.button
                     type="submit"
-                    className="px-6 py-3 bg-accent-600 text-white rounded-xl hover:bg-accent-700 transition-all duration-300 flex items-center shadow-lg"
+                    className="px-6 py-3 bg-accent-600 text-white rounded-xl hover:bg-accent-700 transition-all duration-300 flex items-center shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
+                    disabled={isSubmitting}
                   >
                     <Send size={18} className="mr-2" />
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </motion.button>
                 </form>
               ) : (
