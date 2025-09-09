@@ -7,10 +7,15 @@ interface AuthContextType {
   session: Session | null
   loading: boolean
   signUp: (email: string, password: string, metadata?: any) => Promise<{ error: AuthError | null }>
+  signUpWithPhone: (phone: string, password: string, metadata?: any) => Promise<{ error: AuthError | null }>
   signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>
+  signInWithPhone: (phone: string, password: string) => Promise<{ error: AuthError | null }>
+  signInWithIdentifier: (identifier: string, password: string) => Promise<{ error: AuthError | null }>
   signOut: () => Promise<{ error: AuthError | null }>
   resetPassword: (email: string) => Promise<{ error: AuthError | null }>
+  resetPasswordWithPhone: (phone: string) => Promise<{ error: AuthError | null }>
   updateProfile: (updates: any) => Promise<{ error: AuthError | null }>
+  verifyPhone: (phone: string, token: string) => Promise<{ error: AuthError | null }>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -63,12 +68,42 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return { error }
   }
 
+  const signUpWithPhone = async (phone: string, password: string, metadata?: any) => {
+    const { error } = await supabase.auth.signUp({
+      phone,
+      password,
+      options: {
+        data: { ...metadata, phone_number: phone },
+      },
+    })
+    return { error }
+  }
+
   const signIn = async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
     return { error }
+  }
+
+  const signInWithPhone = async (phone: string, password: string) => {
+    const { error } = await supabase.auth.signInWithPassword({
+      phone,
+      password,
+    })
+    return { error }
+  }
+
+  const signInWithIdentifier = async (identifier: string, password: string) => {
+    // Check if identifier is email or phone
+    const isEmail = identifier.includes('@')
+    
+    if (isEmail) {
+      return signIn(identifier, password)
+    } else {
+      return signInWithPhone(identifier, password)
+    }
   }
 
   const signOut = async () => {
@@ -83,8 +118,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return { error }
   }
 
+  const resetPasswordWithPhone = async (phone: string) => {
+    const { error } = await supabase.auth.resetPasswordForPhone(phone, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    })
+    return { error }
+  }
+
   const updateProfile = async (updates: any) => {
     const { error } = await supabase.auth.updateUser(updates)
+    return { error }
+  }
+
+  const verifyPhone = async (phone: string, token: string) => {
+    const { error } = await supabase.auth.verifyOtp({
+      phone,
+      token,
+      type: 'sms',
+    })
     return { error }
   }
 
@@ -93,10 +144,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     session,
     loading,
     signUp,
+    signUpWithPhone,
     signIn,
+    signInWithPhone,
+    signInWithIdentifier,
     signOut,
     resetPassword,
+    resetPasswordWithPhone,
     updateProfile,
+    verifyPhone,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
