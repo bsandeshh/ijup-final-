@@ -7,9 +7,11 @@ interface AuthContextType {
   session: Session | null
   loading: boolean
   signUp: (email: string, password: string, metadata?: any) => Promise<{ error: AuthError | null }>
-  signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>
+  signIn: (identifier: string, password: string) => Promise<{ error: AuthError | null }>
+  signInWithPhone: (phone: string, password: string) => Promise<{ error: AuthError | null }>
   signOut: () => Promise<{ error: AuthError | null }>
   resetPassword: (email: string) => Promise<{ error: AuthError | null }>
+  resetPasswordWithPhone: (phone: string) => Promise<{ error: AuthError | null }>
   updateProfile: (updates: any) => Promise<{ error: AuthError | null }>
 }
 
@@ -63,12 +65,44 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return { error }
   }
 
-  const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    return { error }
+  const signIn = async (identifier: string, password: string) => {
+    // Check if identifier is email or phone number
+    const isEmail = identifier.includes('@')
+    
+    if (isEmail) {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: identifier,
+        password,
+      })
+      return { error }
+    } else {
+      // For phone number, we need to use OTP or find the user first
+      return await signInWithPhone(identifier, password)
+    }
+  }
+
+  const signInWithPhone = async (phone: string, password: string) => {
+    try {
+      // First, try to find user by phone number
+      const { data: userData, error: userError } = await supabase
+        .from('users')
+        .select('email')
+        .eq('phone_number', phone)
+        .single()
+
+      if (userError || !userData?.email) {
+        return { error: { message: 'User not found with this phone number' } as AuthError }
+      }
+
+      // Sign in with the associated email
+      const { error } = await supabase.auth.signInWithPassword({
+        email: userData.email,
+        password,
+      })
+      return { error }
+    } catch (error) {
+      return { error: error as AuthError }
+    }
   }
 
   const signOut = async () => {
@@ -83,6 +117,29 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return { error }
   }
 
+  const resetPasswordWithPhone = async (phone: string) => {
+    try {
+      // Find user by phone number
+      const { data: userData, error: userError } = await supabase
+        .from('users')
+        .select('email')
+        .eq('phone_number', phone)
+        .single()
+
+      if (userError || !userData?.email) {
+        return { error: { message: 'User not found with this phone number' } as AuthError }
+      }
+
+      // Reset password using the associated email
+      const { error } = await supabase.auth.resetPasswordForEmail(userData.email, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      })
+      return { error }
+    } catch (error) {
+      return { error: error as AuthError }
+    }
+  }
+
   const updateProfile = async (updates: any) => {
     const { error } = await supabase.auth.updateUser(updates)
     return { error }
@@ -94,8 +151,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     loading,
     signUp,
     signIn,
+    signInWithPhone,
     signOut,
     resetPassword,
+    resetPasswordWithPhone,
     updateProfile,
   }
 
