@@ -2,13 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, UserCircle, ChevronDown } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
+import { useAuth } from '../../context/AuthContext';
+import { AuthModal } from '../Auth/AuthModal';
+import { UserProfile } from '../Auth/UserProfile';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const { isLoggedIn, login, logout } = useAppContext();
+  const { user, loading: authLoading } = useAuth();
   const location = useLocation();
   const titleRef = useRef<HTMLSpanElement>(null);
 
@@ -150,17 +155,11 @@ const Header: React.FC = () => {
 
         {/* Desktop Auth Buttons */}
         <div className="hidden md:flex items-center space-x-4">
-          {isLoggedIn ? (
-            <button
-              onClick={logout}
-              className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 transition-colors duration-200"
-            >
-              <UserCircle size={20} />
-              <span>Logout</span>
-            </button>
+          {user ? (
+            <UserProfile onLogout={() => console.log('User logged out')} />
           ) : (
             <button
-              onClick={login}
+              onClick={() => setShowAuthModal(true)}
               className="flex items-center space-x-1 px-4 py-2 bg-primary-700 text-white rounded-md hover:bg-primary-800 transition-colors duration-200"
             >
               <UserCircle size={20} />
@@ -233,17 +232,25 @@ const Header: React.FC = () => {
                 )}
 
                 {/* Mobile Auth */}
-                {isLoggedIn ? (
-                  <button
-                    onClick={logout}
-                    className="flex items-center space-x-1 py-2 text-gray-700"
-                  >
-                    <UserCircle size={20} />
-                    <span>Logout</span>
-                  </button>
+                {user ? (
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-gray-700">
+                      Welcome, {user.user_metadata?.name || user.email?.split('@')[0] || 'User'}!
+                    </span>
+                    <button
+                      onClick={() => {
+                        // You can add logout functionality here
+                        console.log('Logout clicked')
+                      }}
+                      className="flex items-center space-x-1 text-gray-700 hover:text-red-600"
+                    >
+                      <UserCircle size={20} />
+                      <span>Logout</span>
+                    </button>
+                  </div>
                 ) : (
                   <button
-                    onClick={login}
+                    onClick={() => setShowAuthModal(true)}
                     className="flex items-center space-x-1 py-2 text-primary-700"
                   >
                     <UserCircle size={20} />
@@ -255,6 +262,17 @@ const Header: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onSuccess={() => {
+          console.log('Authentication successful!')
+          setShowAuthModal(false)
+        }}
+        initialMode="login"
+      />
     </header>
   );
 };

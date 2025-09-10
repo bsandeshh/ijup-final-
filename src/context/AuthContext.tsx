@@ -1,16 +1,17 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { User, Session, AuthError } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
+import { AuthService, LoginCredentials, SignUpCredentials, AuthResponse } from '../lib/auth'
 
 interface AuthContextType {
   user: User | null
   session: Session | null
   loading: boolean
-  signUp: (email: string, password: string, metadata?: any) => Promise<{ error: AuthError | null }>
-  signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>
+  signUp: (credentials: SignUpCredentials) => Promise<AuthResponse>
+  signIn: (credentials: LoginCredentials) => Promise<AuthResponse>
   signOut: () => Promise<{ error: AuthError | null }>
   resetPassword: (email: string) => Promise<{ error: AuthError | null }>
-  updateProfile: (updates: any) => Promise<{ error: AuthError | null }>
+  updateProfile: (updates: { name?: string; phone?: string; email?: string }) => Promise<{ error: AuthError | null }>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -52,40 +53,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return () => subscription.unsubscribe()
   }, [])
 
-  const signUp = async (email: string, password: string, metadata?: any) => {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: metadata,
-      },
-    })
-    return { error }
+  const signUp = async (credentials: SignUpCredentials) => {
+    return await AuthService.signUp(credentials)
   }
 
-  const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    return { error }
+  const signIn = async (credentials: LoginCredentials) => {
+    return await AuthService.signIn(credentials)
   }
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut()
-    return { error }
+    return await AuthService.signOut()
   }
 
   const resetPassword = async (email: string) => {
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`,
-    })
-    return { error }
+    return await AuthService.resetPassword(email)
   }
 
-  const updateProfile = async (updates: any) => {
-    const { error } = await supabase.auth.updateUser(updates)
-    return { error }
+  const updateProfile = async (updates: { name?: string; phone?: string; email?: string }) => {
+    return await AuthService.updateProfile(updates)
   }
 
   const value = {
