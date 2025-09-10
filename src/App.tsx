@@ -17,6 +17,7 @@ import EthicsPage from './pages/EthicsPage';
 import FaqPage from './pages/FaqPage';
 import ArchivesPage from './pages/ArchivesPage';
 import MembershipPage from './pages/MembershipPage';
+import AuthTestPage from './pages/AuthTestPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/archives" element={<ArchivesPage />} />
             <Route path="/membership" element={<MembershipPage />} />
+            <Route path="/auth-test" element={<AuthTestPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
