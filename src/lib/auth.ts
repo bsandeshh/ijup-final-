@@ -296,6 +296,15 @@ export const isEmail = (input: string): boolean => {
 }
 
 // Helper function to normalize phone number
+export const createPublicUserProfile = async (userId: string, email: string, name: string) => {
+  const { data, error } = await supabase
+    .from('users')
+    .insert([{ id: userId, email, name }]);
+
+  return { data, error };
+};
+
+// Helper function to normalize phone number
 export const normalizePhone = (phone: string): string => {
   return phone.replace(/\D/g, '')
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, UserCircle, ChevronDown } from 'lucide-react';
-import { useAppContext } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
 import { AuthModal } from '../Auth/AuthModal';
 import { UserProfile } from '../Auth/UserProfile';
@@ -12,8 +11,7 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const { isLoggedIn, login, logout } = useAppContext();
-  const { user, loading: authLoading } = useAuth();
+  const { user } = useAuth();
   const location = useLocation();
   const titleRef = useRef<HTMLSpanElement>(null);
 
@@ -90,6 +88,7 @@ const Header: React.FC = () => {
         { to: '/faq', text: 'FAQ' },
         { to: '/archives', text: 'Archives' },
         { to: '/membership', text: 'Membership' },
+        { to: '/downloads', text: 'Downloads' },
       ],
     },
     { to: '/browse', text: 'Browse Papers' },

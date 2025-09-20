@@ -1,5 +1,5 @@
 import React from 'react';
-import { Info, FileText, CheckCircle, AlertCircle, FilePlus, FileSignature } from 'lucide-react';
+import { Info, FileText, CheckCircle, AlertCircle, FileSignature } from 'lucide-react';
 import { motion } from 'framer-motion';
 import PageLayout from '../components/Layout/PageLayout';
 
@@ -18,15 +18,6 @@ const AuthorGuidelinesPage: React.FC = () => {
     }
   };
 
-  const floatingAnimation = {
-    x: [0, 20, 0],
-    y: [0, -20, 0],
-    transition: {
-      duration: 5,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  };
 
   const pulseAnimation = {
     scale: [1, 1.1, 1],

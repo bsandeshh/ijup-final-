@@ -249,6 +249,7 @@ const Resources: React.FC = () => {
               </motion.div>
             </motion.div>
           </div>
+
         </motion.div>
       </div>
     </section>

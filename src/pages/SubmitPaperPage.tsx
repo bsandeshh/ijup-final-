@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, Upload, CheckCircle, Info, User } from 'lucide-react';
 import PageLayout from '../components/Layout/PageLayout';
 
+import { submitPaper } from '../lib/paper';
+
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -33,10 +35,33 @@ const SubmitPaperPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [file, setFile] = useState<File | null>(null);
+  const [formData, setFormData] = useState({
+    corresponding_author_name: '',
+    email: '',
+    affiliation: '',
+    co_authors: '',
+    title: '',
+    abstract: '',
+    keywords: '',
+    category: '',
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    if (!file) {
+      alert('Please select a manuscript file.');
+      return;
+    }
+
+    const submissionData = { ...formData, manuscript_file: file };
+    const { error } = await submitPaper(submissionData);
+
+    if (error) {
+      alert('There was an error submitting your paper. Please try again.');
+      console.error(error);
+    } else {
+      setIsSubmitted(true);
+    }
   };
 
   const nextStep = () => setCurrentStep((prev) => Math.min(prev + 1, 3));
@@ -46,6 +71,11 @@ const SubmitPaperPage: React.FC = () => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
     }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
   return (
@@ -183,10 +213,12 @@ const SubmitPaperPage: React.FC = () => {
                                 Corresponding Name*
                               </label>
                               <input
-                                id="corresponding-author"
+                                id="corresponding_author_name"
                                 type="text"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                                 placeholder="Full Name"
+                                value={formData.corresponding_author_name}
+                                onChange={handleInputChange}
                                 required
                               />
                             </div>
@@ -200,6 +232,8 @@ const SubmitPaperPage: React.FC = () => {
                                 type="email"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                                 placeholder="email@example.com"
+                                value={formData.email}
+                                onChange={handleInputChange}
                                 required
                               />
                             </div>
@@ -213,6 +247,8 @@ const SubmitPaperPage: React.FC = () => {
                                 type="text"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                                 placeholder="University/Institution"
+                                value={formData.affiliation}
+                                onChange={handleInputChange}
                                 required
                               />
                             </div>
@@ -222,9 +258,11 @@ const SubmitPaperPage: React.FC = () => {
                                 Co-Authors (optional)
                               </label>
                               <textarea
-                                id="co-authors"
+                                id="co_authors"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                                 placeholder="Add each co-author with their affiliation"
+                                value={formData.co_authors}
+                                onChange={handleInputChange}
                                 rows={3}
                               />
                             </div>
@@ -261,6 +299,8 @@ const SubmitPaperPage: React.FC = () => {
                                 type="text"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                                 placeholder="Enter the full title of your paper"
+                                value={formData.title}
+                                onChange={handleInputChange}
                                 required
                               />
                             </div>
@@ -273,6 +313,8 @@ const SubmitPaperPage: React.FC = () => {
                                 id="abstract"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                                 placeholder="Provide a summary of your paper"
+                                value={formData.abstract}
+                                onChange={handleInputChange}
                                 rows={6}
                                 required
                               />
@@ -287,6 +329,8 @@ const SubmitPaperPage: React.FC = () => {
                                 type="text"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                                 placeholder="e.g. AI, Sustainability"
+                                value={formData.keywords}
+                                onChange={handleInputChange}
                                 required
                               />
                             </div>
@@ -298,6 +342,8 @@ const SubmitPaperPage: React.FC = () => {
                               <select
                                 id="category"
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
+                                value={formData.category}
+                                onChange={handleInputChange}
                                 required
                               >
                                 <option value="">Select a category</option>

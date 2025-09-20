@@ -16,7 +16,4 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 })
 
 // Database types will be generated and imported here
-export type Database = {
-  // This will be replaced with generated types from Supabase CLI
-  // Run: npx supabase gen types typescript --project-id YOUR_PROJECT_ID > src/types/database.ts
-}
+export type Database = Record<string, never>

@@ -25,7 +25,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [papers, setPapers] = useState<Paper[]>(MOCK_PAPERS);
   const [searchTerm, setSearchTerm] = useState('');
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
 
   const isLoggedIn = !!user;
 

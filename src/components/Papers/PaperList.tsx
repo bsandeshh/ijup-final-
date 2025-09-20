@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Filter } from 'lucide-react';
 import PaperCard from './PaperCard';
-import { Paper } from '../../types';
 import { useAppContext } from '../../context/AppContext';
 import { MOCK_PAPERS } from '../../data/mockData';
 

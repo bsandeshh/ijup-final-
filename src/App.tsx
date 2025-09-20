@@ -19,6 +19,7 @@ import ArchivesPage from './pages/ArchivesPage';
 import MembershipPage from './pages/MembershipPage';
 import AuthTestPage from './pages/AuthTestPage';
 import NotFoundPage from './pages/NotFoundPage';
+import DownloadsPage from './pages/DownloadsPage';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/archives" element={<ArchivesPage />} />
             <Route path="/membership" element={<MembershipPage />} />
+            <Route path="/downloads" element={<DownloadsPage />} />
             <Route path="/auth-test" element={<AuthTestPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

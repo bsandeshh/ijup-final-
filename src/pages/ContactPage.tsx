@@ -36,8 +36,8 @@ const ContactPage: React.FC = () => {
       setEmail('');
       setSubject('');
       setMessage('');
-    } catch (err: any) {
-      setErrorMessage(err?.message || 'Failed to send message. Please try again.');
+    } catch (err: unknown) {
+      setErrorMessage((err as Error)?.message || 'Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -343,7 +343,7 @@ const ContactPage: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Map Placeholder */}
+          {/* Map Section */}
           <motion.div 
             className="bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden h-80 shadow-2xl border border-white/20"
             initial={{ opacity: 0, y: 20 }}
@@ -351,14 +351,38 @@ const ContactPage: React.FC = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
             whileHover={{ scale: 1.02 }}
           >
-            <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-accent-100 to-accent-200">
-              <motion.p 
-                className="text-accent-700 font-medium text-lg"
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 2, repeat: Infinity }}
+            <div className="h-full w-full flex flex-col items-center justify-center bg-gradient-to-br from-accent-100 to-accent-200 relative">
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1 }}
               >
-                Interactive Map Would Be Embedded Here
-              </motion.p>
+                <motion.div
+                  className="mb-4"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <MapPin className="h-16 w-16 text-accent-600 mx-auto" />
+                </motion.div>
+                <h3 className="text-xl font-bold text-accent-800 mb-2">Our Location</h3>
+                <p className="text-accent-700 font-medium mb-4">
+                  MATHURA Heights, BMSD Society Office<br />
+                  Basaveshwar Chowke, M G Road<br />
+                  Ahmedpur, Dist. Latur, MH, India – 413515
+                </p>
+                <motion.a
+                  href="https://share.google/JqEeJqr21uGuuuE5W"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-accent-600 text-white rounded-lg font-semibold hover:bg-accent-700 transition-all duration-300 shadow-lg"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <MapPin className="h-5 w-5 mr-2" />
+                  View on Google Maps
+                </motion.a>
+              </motion.div>
             </div>
           </motion.div>
         </div>
